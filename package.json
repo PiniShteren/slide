@@ -2,6 +2,7 @@
   "name": "practicework",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://PiniShteren.github.io/slide",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -12,6 +13,7 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
+    "deploy":"npm run build&&gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
