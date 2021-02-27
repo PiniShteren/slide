@@ -1,49 +1,12 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
 .App {
 	text-align: center;
 }
-#logo {
-	transform: skew(6deg, 10deg);
-	/* transform: ; */
-}
-.carousel-index {
-	display: flex;
-	align-items: center;
-}
-.carousel-index li {
-	/* display: block; */
-	width: 2em;
-	font-size: 10vh;
-	line-height: 0;
-	/*height: 2em;
-	border-radius: 100%;
-	background-color: #666;
-	cursor: pointer; */
-}
-.hide {
-	animation: hide 0.5s;
-	animation-fill-mode: both;
-}
-@keyframes hide {
-	from {
-		transform: scale(1);
-		opacity: 1;
-	}
-	to {
-		transform: scale(0.7);
-		opacity: 0;
-	}
-}
-.show {
-	animation: show 0.5s;
-	animation-fill-mode: both;
-}
-@keyframes show {
-	from {
-		transform: scale(0.7);
-		opacity: 0.6;
-	}
-	to {
-		transform: scale(1);
-		opacity: 1;
-	}
+.body {
+	min-height: 80vh;
+	z-index: -1;
 }

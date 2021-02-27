@@ -1,0 +1,48 @@
+.footer {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	background-color: rgb(165, 165, 165);
+}
+.options-footer {
+	width: 80%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5vh 5vh 1vh 5vh;
+}
+#link-footer {
+	text-decoration: none;
+	color: black;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+#link-footer:hover {
+	font-weight: bold;
+}
+li {
+	text-align: right;
+}
+.icons-footer {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	width: 10vh;
+}
+#react-whatsapp {
+	background: none;
+	border: none;
+}
+.whatsapp:hover {
+	transform: scale(1.1, 1.1);
+}
+.facebook:hover {
+	transform: scale(1.1, 1.1);
+}
+.footer-p {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	margin: 2vh;
+	font-size: 2.5vh;
+}

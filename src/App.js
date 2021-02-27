@@ -1,38 +1,50 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react';
 import "./App.css";
-import Post from "./component/Post";
-import AddPost from "./component/AddPost";
-import Carousel from "./component/Carousel";
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
-export default class App extends Component {
-  state = {
-    list: [
-      { title: 'Israel', info: "Jerusalem" },
-      { title: 'Japan', info: 'Tokyo' },
-      { title: "Italy", info: "Roma" }]
+import Header from "./component/Header/Header";
+import Home from "./component/Home/Home";
+import ProductView from "./component/ProductView/ProductView";
+import Content from "./component/Content/Content";
+import About from './component/About/About';
+import Footer from "./component/Footer/Footer";
+
+import data from "./component/data/doors.json";
+const dataArr = data.catalog;
+
+function App() {
+  const [scroll, setScroll] = useState(0);
+  const [i, setI] = useState(0);
+  const openProduct = (index) => {
+    setI(index);
+  }
+  const sendScroll = (scrolling) => {
+    setScroll(scrolling);
   }
 
-  delete = (index) => {
-    this.setState({ list: this.state.list.filter((e, i) => i !== index) })
-  }
-  addPost = (title, info) => {
-    let newPost = {
-      title: title,
-      info: info
-    }
-    this.setState({ list: [...this.state.list, newPost] })
-  }
-  render() {
-    return (
-      <div className="App">
-        <h1 id="logo">Posts</h1>
-        <Carousel />
-        <AddPost addPost={this.addPost} />
-        {this.state.list.map((e, i) => {
-          return <Post key={i} title={e.title} info={e.info} index={i} delete={this.delete} />
-        })}
-      </div>
-    )
-  }
+  return (
+    <div className="App">
+      <Router>
+        <Header />
+        <div className="body">
+          <Switch>
+            <Route exact path="/" component={() => {
+              return <Home scroll={scroll} sendScroll={sendScroll} openProduct={openProduct} />
+            }} />
+            <Route path="/productView" component={() => {
+              return <ProductView dataArr={dataArr[i]} />
+            }} />
+            <Route path="/content" component={() => {
+              return <Content />
+            }} />
+            <Route path="/about" component={() => {
+              return <About />
+            }} />
+          </Switch>
+        </div>
+        <Footer />
+      </Router>
+    </div>
+  )
 }
-
+export default App;
