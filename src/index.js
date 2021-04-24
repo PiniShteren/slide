@@ -6,7 +6,7 @@ import Reducers from './redux/reducers/index';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 const store = createStore(Reducers,
   window.__REDUX_DEVTOOLS_EXTENSION__ &&
   window.__REDUX_DEVTOOLS_EXTENSION__()
