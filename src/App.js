@@ -1,50 +1,33 @@
-import React, { useState } from 'react';
+import React from 'react';
 import "./App.css";
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Header from "./component/Header/Header";
-import Home from "./component/Home/Home";
-import ProductView from "./component/ProductView/ProductView";
-import Content from "./component/Content/Content";
-import About from './component/About/About';
-import Footer from "./component/Footer/Footer";
+import { Switch, Route } from 'react-router-dom';
 
-import data from "./component/data/doors.json";
-const dataArr = data.catalog;
+import { useSelector } from 'react-redux'
 
-function App() {
-  const [scroll, setScroll] = useState(0);
-  const [i, setI] = useState(0);
-  const openProduct = (index) => {
-    setI(index);
-  }
-  const sendScroll = (scrolling) => {
-    setScroll(scrolling);
-  }
-
+import Header from './Components/Header/Header';
+import Home from "./Components/Home/Home";
+import Product from './Components/Product/Product';
+import Category from './Components/Category/Category';
+export default function App() {
+  const categories = useSelector(state => state.categories);
   return (
     <div className="App">
-      <Router>
-        <Header />
-        <div className="body">
-          <Switch>
-            <Route exact path="/" component={() => {
-              return <Home scroll={scroll} sendScroll={sendScroll} openProduct={openProduct} />
-            }} />
-            <Route path="/productView" component={() => {
-              return <ProductView dataArr={dataArr[i]} />
-            }} />
-            <Route path="/content" component={() => {
-              return <Content />
-            }} />
-            <Route path="/about" component={() => {
-              return <About />
-            }} />
-          </Switch>
-        </div>
-        <Footer />
-      </Router>
+      <Header />
+      <Switch>
+        <Route path='/doors' exact component={() => {
+          return <Home />
+        }} />
+        {categories.map((e, i) => {
+          return <Route key={i} exact path={`/${e}`} component={() => {
+            return <Category category={e} />
+          }} />
+        })}
+        <Route exact path="/product" component={() => {
+          return <Product />
+        }} />
+      </Switch>
+
     </div>
   )
 }
-export default App;

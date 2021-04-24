@@ -6,7 +6,3 @@
 .App {
 	text-align: center;
 }
-.body {
-	min-height: 80vh;
-	z-index: -1;
-}
